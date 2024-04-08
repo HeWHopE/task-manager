@@ -91,36 +91,32 @@ export class TaskService {
     try {
       const { name, description, due_date, priority, list_name } = updatedTask
 
-     
-
       const existingTask = await this.getTask(id, listId)
 
       if (!existingTask || existingTask === updatedTask) {
         return
       }
 
-      console.log(updatedTask)
+      if (updatedTask.due_date) {
+        const updatedTaskOnlyDate = await this.entityManager.query(
+          'UPDATE tasks SET due_date = $1  WHERE id = $2 AND list_id = $3 RETURNING *',
+          [due_date, id, listId],
+        )
 
-      if(updatedTask.due_date){
-      const updatedTaskOnlyDate = await this.entityManager.query(
-        'UPDATE tasks SET due_date = $1  WHERE id = $2 AND list_id = $3 RETURNING *',
-        [due_date, id, listId],
-      )
-      
-      const existingDueDate = new Date(existingTask.due_date)
-      const updatedDueDate = updatedTaskOnlyDate[0][0].due_date
-      
-      if (existingDueDate.getTime() === updatedDueDate.getTime()) {
-      } else {
-        const activityLog = new ActivityLog()
-        activityLog.action_type = 'update'
-        activityLog.action_description = `You updated the due date of ${existingTask.name}`
-        activityLog.timestamp = new Date()
-        activityLog.task_id = id
-        activityLog.list_id = listId
-        await this.activityLogService.logActivity(activityLog)
+        const existingDueDate = new Date(existingTask.due_date)
+        const updatedDueDate = updatedTaskOnlyDate[0][0].due_date
+
+        if (existingDueDate.getTime() === updatedDueDate.getTime()) {
+        } else {
+          const activityLog = new ActivityLog()
+          activityLog.action_type = 'update'
+          activityLog.action_description = `You updated the due date of ${existingTask.name}`
+          activityLog.timestamp = new Date()
+          activityLog.task_id = id
+          activityLog.list_id = listId
+          await this.activityLogService.logActivity(activityLog)
+        }
       }
-    }
 
       const logActivityIfChanged = async (
         propertyName: string,
@@ -137,7 +133,6 @@ export class TaskService {
           await this.activityLogService.logActivity(activityLog)
         }
       }
-      console.log(updatedTask)
 
       await Promise.all([
         logActivityIfChanged(
@@ -162,13 +157,11 @@ export class TaskService {
         ),
       ])
 
-      
-
       const [updatedTaskRecord] = await this.entityManager.query(
         'UPDATE tasks SET name = $1, description = $2, due_date = $3, priority = $4, list_name = $5 WHERE id = $6 AND list_id = $7 RETURNING *',
         [name, description, due_date, priority, list_name, id, listId],
       )
-     
+
       return updatedTaskRecord
     } catch (error) {
       throw new Error('Failed to update task in the database')

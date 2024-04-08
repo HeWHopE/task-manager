@@ -21,14 +21,16 @@ export const boardApi = createApi({
       invalidatesTags: ['board'],
     }),
 
-    updateBoard: build.mutation<IBoard, { id: number }>({
-      query: (board) => ({
-        url: `/board/${board.id}`,
-        method: 'PUT',
-        body: board,
-      }),
-      invalidatesTags: ['board'],
-    }),
+    updateBoard: build.mutation<IBoard, { id: number; board: Partial<IBoard> }>(
+      {
+        query: ({ id, board }) => ({
+          url: `/board/${id}`,
+          method: 'PUT',
+          body: board,
+        }),
+        invalidatesTags: ['board'],
+      },
+    ),
     deleteBoard: build.mutation<void, { id: number }>({
       query: ({ id }) => ({
         url: `/board/${id}`,

@@ -16,23 +16,21 @@ const Boards: React.FC<Props> = ({ boards }) => {
   const handleDelete = (id: number) => {
     deleteBoard({ id: id }) // Pass the id parameter to deleteBoard
   }
-
   return (
     <div className="p-4 flex justify-center">
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
         <CreateBB />
         {boards &&
           boards.map((board) => (
-            <div key={board.id} className="relative group">
+            <div key={board.id} className="relative group text-white">
               <Link
                 to={`/lists/${Number(board.id)}`}
                 className="w-60 h-20 bg-slate-400 p-2 rounded cursor-pointer text-white flex items-center justify-center"
               >
-                <CloseXButton onClick={() => handleDelete(Number(board.id))} />
+                {/* Apply Tailwind's truncate class */}
+                <div className="truncate">{board.name}</div>
               </Link>
-              <div className="absolute top-0 left-0 p-1 text-white font-bold">
-                {board.name}
-              </div>
+              <CloseXButton onClick={() => handleDelete(Number(board.id))} />
             </div>
           ))}
       </div>

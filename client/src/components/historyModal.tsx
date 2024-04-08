@@ -48,7 +48,7 @@ const HistoryModal: React.FC<HistoryModalProps> = ({
   useEffect(() => {
     onOpenChange(open)
   }, [open, onOpenChange])
-  console.log(activities);
+  console.log(activities)
   return (
     <div>
       <div
@@ -67,25 +67,26 @@ const HistoryModal: React.FC<HistoryModalProps> = ({
         {open && ( // Conditionally render the list items only when the modal is open
           <div className={`mb-2 pl-2 pr-2`}>
             <ul className="p-2 border-t-2 border-slate-400">
-  {activities &&
-    activities
-      .slice() // Create a shallow copy of the activities array
-      .sort((a, b) => b.id - a.id) // Sort activities by ID in descending order
-      .slice(0, 8) // Get the last 8 activities after sorting
-      .map((activity, index) => (
-        <div key={index} className="border-b-2 border-slate-400 text-white">
-          <li className="p-2">{activity.action_description}</li>
-          <div className="flex justify-between px-2 py-1 text-white">
-            <span>
-              {formatDate(activity.timestamp.toLocaleString())} at{' '}
-              {formatTime(activity.timestamp.toLocaleString())}
-            </span>
-          </div>
-        </div>
-      ))}
-</ul>
-
-
+              {activities &&
+                activities
+                  .slice() // Create a shallow copy of the activities array
+                  .sort((a, b) => b.id - a.id) // Sort activities by ID in descending order
+                  .slice(0, 8) // Get the last 8 activities after sorting
+                  .map((activity, index) => (
+                    <div
+                      key={index}
+                      className="border-b-2 border-slate-400 text-white"
+                    >
+                      <li className="p-2">{activity.action_description}</li>
+                      <div className="flex justify-between px-2 py-1 text-white">
+                        <span>
+                          {formatDate(activity.timestamp.toLocaleString())} at{' '}
+                          {formatTime(activity.timestamp.toLocaleString())}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+            </ul>
           </div>
         )}
       </div>

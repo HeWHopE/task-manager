@@ -32,7 +32,6 @@ const ListItem: React.FC<ListItemProps> = ({ list, remove }) => {
       await updateList({ name: listName, list_id: Number(list.id) })
     } catch (error) {
       console.error('Error updating list:', error)
-      
     }
   }
 
@@ -41,14 +40,12 @@ const ListItem: React.FC<ListItemProps> = ({ list, remove }) => {
   }
 
   const handleRemove = () => {
-
     if (list.id !== undefined) {
       remove(list)
     } else {
       console.error('ID is undefined')
     }
   }
-
 
   const handleAddCard = () => {
     setIsModalOpen(true)
@@ -61,8 +58,6 @@ const ListItem: React.FC<ListItemProps> = ({ list, remove }) => {
   const handleDeleteCard = (id: number) => {
     console.log('Delete card with id:', id)
   }
-
-  
 
   return (
     <div className="pl-4 flex justify-between items-center w-11/12 p-2 ">
@@ -90,53 +85,48 @@ const ListItem: React.FC<ListItemProps> = ({ list, remove }) => {
           onClick={() => setEditMode(true)}
           value={listName}
           rows={1}
-          
-          
         />
       )}
-<div className="relative">
-  <div
-    className="cursor-pointer hover:bg-slate-400 rounded-xl duration-200 p-2 w-8 h-8 flex items-center justify-center" // Added width and height classes
-    onClick={togglePopup}
-  >
-    <BsThreeDotsVertical />
-  </div>
-  {showPopup && (
-  <>
-    
-    <div
-      className="fixed inset-0 bg-black opacity-0 z-10"
-      onClick={handleClosePopup}
-    ></div>   
-    <div className="absolute -right-20 mt-2 z-20">
-  <div className="bg-white p-4 rounded-lg shadow-md w-56 flex flex-col justify-center items-center"> {/* Adjust the width here */}
-    {/* Popup Title */}
-    <div className="text-lg font-bold mb-4">
-      Actions with List
-    </div>
-
-
-      <div className="space-x-4 border-t-2 p-2 border-slate-200 w-30">
-        <button className="px-4 py-2 text-red-800 rounded" onClick={handleRemove}>Delete List</button>
+      <div className="relative">
+        <div
+          className="cursor-pointer hover:bg-slate-400 rounded-xl duration-200 p-2 w-8 h-8 flex items-center justify-center" // Added width and height classes
+          onClick={togglePopup}
+        >
+          <BsThreeDotsVertical />
+        </div>
+        {showPopup && (
+          <>
+            <div
+              className="fixed inset-0 bg-black opacity-0 z-10"
+              onClick={handleClosePopup}
+            ></div>
+            <div className="absolute -right-20 mt-2 z-20">
+              <div className="bg-white p-4 rounded-lg shadow-md w-56 flex flex-col justify-center items-center">
+                {' '}
+                {/* Adjust the width here */}
+                {/* Popup Title */}
+                <div className="text-lg font-bold mb-4">Actions with List</div>
+                <div className="space-x-4 border-t-2 p-2 border-slate-200 w-30">
+                  <button
+                    className="px-4 py-2 text-red-800 rounded"
+                    onClick={handleRemove}
+                  >
+                    Delete List
+                  </button>
+                </div>
+                <div className="space-x-4 border-t-2 p-2 border-slate-200 w-30">
+                  <a
+                    className="px-4 py-2 text-red-800 rounded cursor-pointer"
+                    onClick={handleClosePopup}
+                  >
+                    Close Popup
+                  </a>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
-
-    <div className="space-x-4 border-t-2 p-2 border-slate-200 w-30">
-    <a className="px-4 py-2 text-red-800 rounded cursor-pointer" onClick={handleClosePopup}>
-      Close Popup
-    </a>
-    </div>
-  </div>
-</div>
-
-  </>
-)}
-
-
-</div>
-
-
-
-
     </div>
   )
 }

@@ -17,7 +17,6 @@ const App = () => {
     <Router>
       <MyNavbar />
 
-       
       <BoardsModal
         onClose={handleCloseBoardsModal}
         onOpenChange={setBoardsModalOpen}

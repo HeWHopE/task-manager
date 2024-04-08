@@ -49,16 +49,18 @@ const TaskList: React.FC<TaskListProps> = ({ listId }) => {
       {taskError && <div>Error fetching tasks</div>}
       {tasks &&
         tasks.map((task: ITask) => (
-          <li key={task.id} className={`flex justify-center ${task.description ? 'h-20' : 'h-12'} my-1`}>
-  <TaskItem
-    remove={handleRemove}
-    update={handleUpdate}
-    move={handleMoveTask}
-    key={task.id}
-    task={task}
-  />
-</li>
-
+          <li
+            key={task.id}
+            className={`flex justify-center ${task.description ? 'h-20' : 'h-12'} ${task.due_date ? 'h-20' : 'h-12'} my-1`}
+          >
+            <TaskItem
+              remove={handleRemove}
+              update={handleUpdate}
+              move={handleMoveTask}
+              key={task.id}
+              task={task}
+            />
+          </li>
         ))}
     </ol>
   )
