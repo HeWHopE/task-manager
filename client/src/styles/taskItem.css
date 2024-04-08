@@ -1,0 +1,149 @@
+.task-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-name {
+  font-weight: bold;
+}
+
+.task-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  flex-shrink: 0;
+  max-width: 200px;
+}
+
+.task-description {
+  color: #9399ac;
+  margin-left: 0;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.task-due-date {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  color: #6f7791;
+}
+
+.due-date-icon {
+  margin-right: 5px;
+  color: black;
+}
+
+.task-priority {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.priority-badge {
+  display: flex;
+  align-items: center;
+  background-color: #f3f4f6;
+  border-radius: 20px;
+  padding: 3px 8px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #818bb1;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.priority-text {
+  font-size: 0.8em;
+  color: #9399ac;
+}
+
+.task-item {
+  position: relative;
+}
+
+.popup {
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 100;
+}
+
+.popup > div {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.popup > div:hover {
+  background-color: #f0f0f0;
+}
+
+.task-buttons:hover {
+  cursor: pointer;
+}
+
+.select-container {
+  position: relative;
+}
+
+.select {
+  appearance: none;
+  margin-top: 6px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 200px;
+  cursor: pointer;
+  background-color: #e1e3ea;
+}
+
+.select::after {
+  content: '▼';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.select-options {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.select-option {
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.select-option:hover {
+  background-color: #e41d1d;
+}
