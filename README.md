@@ -1,29 +1,22 @@
+
 # To Run the Application Locally
 
-## Configuration
+## Start the server
 
-Before running the application, make sure to set up the environment variables by creating a `.env` file in the root directory of the project. Add the following variables to the `.env` file:
+To start the server use Docker Compose:
 
-```plaintext
-DATABASE_USERNAME=USERNAME
-DATABASE_PASSWORD=PASSWORD
-DATABASE_NAME=NAME
-DATABASE_HOST=HOST
-DATABASE_PORT=PORT
+```bash
+docker-compose up --build
 ```
 
-## Installation
 
-To install the dependencies, run the following command in the terminal:
+## Start the client
 
-```plaintext
-npm install
-```
+To start the client in development mode, run the following command:
 
-## Start the Application
-
-To start the application in development mode, run the following command:
-
-```plaintext
+```bash
+cd client
+npm i
 npm start
 ```
+
