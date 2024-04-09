@@ -5,10 +5,10 @@ FROM node:latest
 WORKDIR /app
 
 # Copy package.json and package-lock.json (if present)
-COPY server/package*.json ./server/
+COPY client/package*.json ./
 
 # Install dependencies
-RUN cd server && npm install
+RUN npm install
 
 # Copy the rest of the application code
 COPY . .
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 5000
 
 # Command to run the application
-CMD ["npm", "run", "start:dev"]
+CMD ["react-scripts", "start"]

@@ -14,7 +14,7 @@ services:
 
   app:
     build:  
-      dockerfile: Dockerfile
+      dockerfile: server/Dockerfile
     container_name: nest-docker-postgres
     environment:
       - PORT=${PORT}
@@ -23,4 +23,17 @@ services:
     depends_on:
       - db
     volumes:
-      - ./src:/app/src
+      - ./server:/app
+
+  client:
+    build:
+      dockerfile: client/Dockerfile
+    container_name: react-docker-postgres
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/app
+    stdin_open: true
+    tty: true
+    depends_on:
+      - app
