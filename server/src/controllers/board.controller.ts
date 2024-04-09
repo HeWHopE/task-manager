@@ -1,9 +1,8 @@
 import { Controller, Get, Post, Body, Delete, Param, Put } from '@nestjs/common'
 
-import { BoardService } from 'src/services/board.service'
 
-import { Board } from 'src/entities/Board.entity'
-import { get } from 'http'
+import { Board } from '../entities/Board.entity'
+import { BoardService } from '../services/board.service'
 
 @Controller()
 export class BoardController {
