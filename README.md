@@ -1,12 +1,3 @@
-
-# To Run an using docker
-
-
-
-```plaintext
-docker compose up --build
-```
-
 # To Run the Application Locally
 
 ## Configuration
