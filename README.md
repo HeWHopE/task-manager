@@ -18,7 +18,7 @@ docker compose up --build
 ```
 
 
-## Start the server
+## Start the client
 
 To start the client in development mode, run the following command:
 
