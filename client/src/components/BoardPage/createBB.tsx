@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { usePostBoardMutation } from '../services/BoardService'
+import { usePostBoardMutation } from '../../services/BoardService'
 
 const CreateBB: React.FC = () => {
   const [showInput, setShowInput] = useState(false)

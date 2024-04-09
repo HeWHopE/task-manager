@@ -1,10 +1,10 @@
 import React from 'react'
-import CloseXButton from './closeXButton'
-import { IBoard } from '../models/IBoard'
+import CloseXButton from '../ListsPage/buttons/closeXButton'
+import { IBoard } from '../../models/IBoard'
 import CreateBB from './createBB'
 import { Link } from 'react-router-dom'
-import { useDeleteBoardMutation } from '../services/BoardService'
-import { usePostBoardMutation } from '../services/BoardService' // Add this line to import the useCreateBoardMutation hook
+import { useDeleteBoardMutation } from '../../services/BoardService'
+import { usePostBoardMutation } from '../../services/BoardService' // Add this line to import the useCreateBoardMutation hook
 
 interface Props {
   boards: IBoard[] | undefined

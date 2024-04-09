@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/App.css'
 import '../styles.css'
-import ListContainer from '../components/listContainer'
-import CreateListButton from '../components/createListButton'
-import HistoryModal from '../components/historyModal'
+import ListContainer from '../components/ListsPage/listContainer'
+import HistoryModal from '../components/ListsPage/modals/historyModal'
+
 import { useFetchActivityQuery } from '../services/ActivityService'
 import { useParams } from 'react-router-dom'
 import MyNavbar from '../components/myNavbar'
