@@ -4,7 +4,7 @@ import './styles.css'
 import Lists from './pages/lists'
 import Boards from './pages/boards'
 import MyNavbar from './components/myNavbar'
-import BoardsModal from './components/boardsModal'
+import BoardsModal from './components/BoardsModal'
 
 const App = () => {
   const [isBoardsModalOpen, setBoardsModalOpen] = useState(false)
