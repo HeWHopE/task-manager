@@ -1,7 +1,7 @@
 # Deployed
 
 ```plaintest
-Link: [Link](https://react-app-2-dep-1.onrender.com/)
+Link: https://react-app-2-dep-1.onrender.com/
 ```
 
 # To Run an application using docker
