@@ -1,22 +1,20 @@
 
-# To Run the Application Locally
+# To Run an using docker
 
-## Start the server
 
-To start the server use Docker Compose:
-
-```bash
-docker-compose up --build
+```plaintext
+docker compose up --build
 ```
 
+# To Run the Application Locally
 
-## Start the client
+
+
+## Start the Application
 
 To start the client in development mode, run the following command:
 
 ```bash
-cd client
-npm i
 npm start
 ```
 
