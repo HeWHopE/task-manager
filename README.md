@@ -8,13 +8,29 @@ docker compose up --build
 
 # To Run the Application Locally
 
+configure .env file
+
+```plaintext
+DATABASE_USERNAME=USERNAME
+DATABASE_PASSWORD=PASSWORD
+DATABASE_NAME=NAME
+DATABASE_HOST=HOST
+DATABASE_PORT=PORT
+```
+
+## Installation
 
 
-## Start the Application
+```bash
+npm install
+```
 
-To start the client in development mode, run the following command:
+## Runing the app
 
 ```bash
 npm start
 ```
+
+
+
 
