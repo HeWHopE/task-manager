@@ -1,5 +1,5 @@
 
-# To Run an using docker
+# To Run an application using docker
 
 
 ```plaintext
@@ -8,8 +8,8 @@ docker compose up --build
 
 # To Run the Application Locally
 
-configure .env file
-
+- Configure the `.env` file:
+  
 ```plaintext
 DATABASE_USERNAME=USERNAME
 DATABASE_PASSWORD=PASSWORD
