@@ -17,7 +17,7 @@ const Boards: React.FC<Props> = ({ boards }) => {
     deleteBoard({ id: id }) // Pass the id parameter to deleteBoard
   }
   return (
-    <div className="p-4 flex justify-center">
+    <div className="p-4 flex justify-center min-h-[871px]">
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
         <CreateBB />
         {boards &&
@@ -25,7 +25,7 @@ const Boards: React.FC<Props> = ({ boards }) => {
             <div key={board.id} className="relative group text-white">
               <Link
                 to={`/lists/${Number(board.id)}`}
-                className="w-60 h-20 bg-slate-400 p-2 rounded cursor-pointer text-white flex items-center justify-center"
+                className="w-60 h-20 bg-gray-300 hover:opacity-70 p-2 rounded cursor-pointer text-black flex items-center justify-center"
               >
                 {/* Apply Tailwind's truncate class */}
                 <div className="truncate">{board.name}</div>

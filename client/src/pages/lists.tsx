@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import '../styles/App.css'
-import '../styles.css'
 import ListContainer from '../components/ListsPage/listContainer'
 import HistoryModal from '../components/ListsPage/modals/historyModal'
 

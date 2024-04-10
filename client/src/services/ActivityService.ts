@@ -3,7 +3,7 @@ import { ActivityLog } from '../models/IActivity'
 
 export const activityApi = createApi({
   reducerPath: 'activityApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://react-app-2-dep.onrender.com' }),
   tagTypes: ['activity'],
   endpoints: (build) => ({
     fetchActivity: build.query<ActivityLog[], { boardId: number }>({

@@ -153,13 +153,13 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
                 <div className="flex justify-end mt-2">
                   <button
                     onClick={handleSave}
-                    className="mr-2 px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                    className="mr-2 px-4 py-2  bg-slate-500 text-white rounded-lg shadow-md hover:bg-gray-400 transition duration-300"
                   >
                     Save
                   </button>
                   <button
                     onClick={toggleTextareaVisibility}
-                    className="px-4 py-2 bg-gray-300 text-black rounded-lg shadow-md hover:bg-gray-400 transition duration-300"
+                    className="px-4 py-2 bg-slate-500 text-white rounded-lg shadow-md hover:bg-gray-400 transition duration-300"
                   >
                     Close
                   </button>
@@ -204,7 +204,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
                       />
                     </div>
                     <button
-                      className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md shadow-md transition duration-300 mr-2"
+                      className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded-md shadow-md transition duration-300 mr-2"
                       onClick={handleSaveDate}
                     >
                       Save
@@ -256,7 +256,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
           </div>
         </div>
         <button
-          className="modal-close bg-blue-500 text-white px-4 py-2 rounded-lg mt-4"
+          className="modal-close hover:bg-slate-400 bg-slate-500 text-white px-4 py-2 rounded-lg mt-4"
           onClick={onClose}
         >
           Close

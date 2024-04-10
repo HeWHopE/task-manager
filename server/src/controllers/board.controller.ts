@@ -32,4 +32,9 @@ export class BoardController {
   async deleteBoard(@Param('id') id: number) {
     return this.boardService.deleteBoard(id)
   }
+
+  @Get("/")
+  async getBoard() {
+    return "SUp"
+  }
 }

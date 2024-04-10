@@ -1,29 +1,33 @@
-import { Module } from '@nestjs/common'
-import { TypeOrmModule } from '@nestjs/typeorm'
-import { ListModule } from './list.module'
-import { TaskModule } from './task.module'
-import { ActivityLogModule } from './activity-log.module'
-import * as dotenv from 'dotenv'
-import { Task } from '../entities/task.entity'
-import { ActivityLog } from '../entities/activity-log.entity'
-import { Board } from 'src/entities/Board.entity'
-import { TaskList } from 'src/entities/taskList.entity'
-import { BoardModule } from './board-module'
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ListModule } from './list.module';
+import { TaskModule } from './task.module';
+import { ActivityLogModule } from './activity-log.module';
+import * as dotenv from 'dotenv';
+import { Task } from '../entities/task.entity';
+import { ActivityLog } from '../entities/activity-log.entity';
+import { Board } from 'src/entities/Board.entity';
+import { TaskList } from 'src/entities/taskList.entity';
+import { BoardModule } from './board-module';
 
-dotenv.config()
 
+dotenv.config();
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'db',
+      host: process.env.POSTGRES_HOST,
       port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'postgres',
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DATABASE,
       entities: [TaskList, Task, ActivityLog, Board],
       synchronize: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }),
+    
     BoardModule,
     ListModule,
     TaskModule,
@@ -31,3 +35,4 @@ dotenv.config()
   ],
 })
 export class AppModule {}
+

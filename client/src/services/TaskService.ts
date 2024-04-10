@@ -9,7 +9,7 @@ interface FetchActivityResponse {
 
 export const taskApi = createApi({
   reducerPath: 'taskApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://react-app-2-dep.onrender.com' }),
   tagTypes: ['Task'],
   endpoints: (build) => ({
     fetchTasks: build.query<ITask[], number>({

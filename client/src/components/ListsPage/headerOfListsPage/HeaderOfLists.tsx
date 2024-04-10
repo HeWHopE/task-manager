@@ -43,28 +43,30 @@ const HeaderOfLists: React.FC<HeaderOfListsProps> = ({
 
     setIsEditing(false)
   }
-
   return (
     <header
       className={`z-0 mr-0 ${
         isHistoryModalOpen ? 'mr-72' : ''
-      } ${isBoardsModalOpen ? 'ml-72' : ''} p-10 text-xl duration-300 h-20 flex items-center justify-between`}
+      } ${isBoardsModalOpen ? 'ml-72' : ''} p-10 text-xl duration-300 border-b-[1px]  border-gray-400  h-20 flex items-center justify-between`}
       onClick={handleHeaderClick}
     >
       {isEditing ? (
-        <input
-          type="text"
-          value={editedName}
-          onChange={handleInputChange}
-          onBlur={handleInputBlur}
-          autoFocus
-          className=" text-black"
-        />
+        <div onClick={(e) => e.stopPropagation()}>
+          <input
+            type="text"
+            value={editedName}
+            onChange={handleInputChange}
+            onBlur={handleInputBlur}
+            autoFocus
+            className="text-black"
+          />
+        </div>
       ) : (
-        <span className="truncate">{board?.name}</span>
+        <span className="truncate text-white cursor-pointer">{board?.name}</span>
       )}
     </header>
-  )
+  );
+  
 }
 
 export default HeaderOfLists
