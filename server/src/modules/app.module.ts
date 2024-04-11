@@ -16,11 +16,12 @@ dotenv.config();
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.POSTGRES_HOST,
+      host: "ep-rapid-pine-a408ai3j-pooler.us-east-1.aws.neon.tech",
       port: 5432,
-      username: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DATABASE,
+      username: "default",
+      password: "UfqT6QYNxaI1",
+      database: "verceldb",
+
       entities: [TaskList, Task, ActivityLog, Board],
       synchronize: true,
       ssl: {
