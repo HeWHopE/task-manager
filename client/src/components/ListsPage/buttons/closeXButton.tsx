@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface CloseXButtonProps {
+export interface CloseXButtonProps {
   onClick: () => void
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { usePostBoardMutation } from '../../services/BoardService'
 
-const CreateBB: React.FC = () => {
+export const CreateBB: React.FC = () => {
   const [showInput, setShowInput] = useState(false)
   const [newBoardName, setNewBoardName] = useState('')
   const [createBoard] = usePostBoardMutation()

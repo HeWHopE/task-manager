@@ -6,4 +6,5 @@ export interface ITask {
   priority?: string
   list_name?: string
   list_id?: string
+  board_id?: number
 }

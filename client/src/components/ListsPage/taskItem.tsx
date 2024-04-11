@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom'
 import TaskModal from './modals/taskModal'
 import { RiEqualizerLine } from 'react-icons/ri' // Import the icon for displaying description
 import { GoClock } from 'react-icons/go'
-interface TaskItemProps {
+export interface TaskItemProps {
   task: ITask
   remove: (task: ITask) => void
   update: (task: ITask) => void
   move: (listId: number, taskId: number, newTaskId: number) => void
+  boardId?: number
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, remove, update, move }) => {
@@ -68,7 +69,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, remove, update, move }) => {
           {task.description && (
             <div className="relative mr-4">
               <RiEqualizerLine
-                className="text-gray-400 h-6 w-6"
+                className=" h-5 w-5 text-black"
                 title="This task has a description"
               />
               <span className="absolute top-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-2 py-1 rounded-md text-xs opacity-0 transition-opacity duration-300 pointer-events-none">
@@ -80,7 +81,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, remove, update, move }) => {
           {task.due_date && (
             <div className="relative">
               <GoClock
-                className="text-gray-400 h-6 w-6"
+                className="text-black h-5 w-5"
                 title={`Due date: ${formatDate(task.due_date)}`}
               />
               <span className="absolute top-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-2 py-1 rounded-md text-xs opacity-0 transition-opacity duration-300 pointer-events-none">

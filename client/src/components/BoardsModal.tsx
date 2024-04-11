@@ -12,10 +12,10 @@ interface BoardsModalProps {
 
 const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
   const [open, setOpen] = useState(false)
-  const [activeBoardIndex, setActiveBoardIndex] = useState<number | null>(null) // Додана змінна для визначення активної дошки
-  const [showInput, setShowInput] = useState(false) // State to toggle visibility
+  const [activeBoardIndex, setActiveBoardIndex] = useState<number | null>(null) 
+  const [showInput, setShowInput] = useState(false) 
   const [newBoardName, setNewBoardName] = useState('')
-  const [showDeleteButton, setShowDeleteButton] = useState(false) // Add state to show delete button
+  const [showDeleteButton, setShowDeleteButton] = useState(false)
   const { data: boards } = useFetchBoardsQuery()
   const [postBoard] = usePostBoardMutation()
 
@@ -27,19 +27,19 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
   }, [open, onOpenChange])
 
   const handleCloseInput = () => {
-    setShowInput(false) // Close the input and buttons when the close button is clicked
+    setShowInput(false) 
   }
 
   const handleAdd = () => {
     if (newBoardName.trim() !== '') {
-      postBoard({ name: newBoardName }) // Assuming postBoard is a function to add a new board
-      setNewBoardName('') // Clear the input after adding the board
-      setShowInput(false) // Close the input and buttons after adding the board
+      postBoard({ name: newBoardName }) 
+      setNewBoardName('') 
+      setShowInput(false) 
     }
   }
 
   const handleAddBoard = () => {
-    setShowInput(true) // Show the input and buttons when plus icon is clicked
+    setShowInput(true) 
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +54,7 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
     <div className="z-50 ">
       <div
         id="history-modal"
-        className={`z-2 min-h-[871px] border-r-[0.5px]  border-gray-400 border-slate-5  top-12 ${open ? 'w-72' : 'w-4  '} duration-300 absolute overflow-hidden`}
+        className={`z-2 min-h-[871px] bg-black border-r-[0.5px]  border-gray-400 border-slate-5  top-12 ${open ? 'w-72' : 'w-4  '} duration-300 absolute overflow-hidden`}
       >
         <nav
           className={` h-20 history-navbar justify-center w-full text-white px-4 duration-300 py-2 flex items-center `}
@@ -73,9 +73,9 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
               className="ml-auto cursor-pointer"
               onClick={handleAddBoard}
             />{' '}
-            {/* Plus icon */}
+            
           </h2>
-          {showInput && ( // Display the input and buttons if showInput is true
+          {showInput && ( 
             <div className="flex items-center mb-4">
               <input
                 type="text"

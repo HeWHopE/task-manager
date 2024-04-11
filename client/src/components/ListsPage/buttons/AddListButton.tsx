@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsPlus } from 'react-icons/bs';
 
-interface AddListButtonProps {
+export interface AddListButtonProps {
   onClick: () => void;
 }
 

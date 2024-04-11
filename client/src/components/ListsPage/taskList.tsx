@@ -4,7 +4,7 @@ import TaskItem from './taskItem'
 import { ITask } from '../../models/ITask'
 import { useMoveTaskMutation } from '../../services/TaskService'
 
-interface TaskListProps {
+export interface TaskListProps {
   listId?: number
 }
 
@@ -51,7 +51,7 @@ const TaskList: React.FC<TaskListProps> = ({ listId }) => {
         tasks.map((task: ITask) => (
           <li
             key={task.id}
-            className={`flex justify-center ${task.description ? 'h-20' : 'h-12'} ${task.due_date ? 'h-20' : 'h-12'} my-1`}
+            className={` r  flex justify-center ${task.description ? 'h-20' : 'h-12'} ${task.due_date ? 'h-20' : 'h-12'} my-1`}
           >
             <TaskItem
               remove={handleRemove}

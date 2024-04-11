@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface PopupProps {
+export interface PopupProps {
   handleClosePopup: () => void;
   handleRemove: () => void;
 }

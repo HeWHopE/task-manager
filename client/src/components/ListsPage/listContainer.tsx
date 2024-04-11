@@ -12,7 +12,7 @@ import { usePostListMutation } from '../../services/ListService'
 
 import { IList } from '../../models/IList'
 
-interface ListContainerProps {
+export interface ListContainerProps {
   isHistoryModalOpen: boolean
   isBoardsModalOpen: boolean
 }

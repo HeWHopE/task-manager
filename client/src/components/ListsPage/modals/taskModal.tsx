@@ -10,6 +10,10 @@ import { useFetchListsQuery } from '../../../services/ListService'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useMoveTaskMutation } from '../../../services/TaskService'
+import ModalHeader from './taskModalComponents/ModalHeader '
+import DescriptionSection from './taskModalComponents/DescriptionSection '
+import ActionsSection from './taskModalComponents/ActionsSection '
+import DueDateSection from './taskModalComponents/DueDateSection'
 export interface TaskModalProps {
   onClose: () => void
   task: ITask
@@ -50,6 +54,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
   }
 
   const handleTaskNameBlur = () => {
+   
     setEditMode(false)
     if (taskName.trim().length === 0) {
       setTaskName('Untitled')
@@ -114,26 +119,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
         onClick={(event) => event.stopPropagation()}
         className="bg-slate-200 rounded-lg md:w-3/5 lg:w-1/2 xl:w-1/3 h-5/6 p-8 overflow-y-auto"
       >
-        <div className="flex items-center">
-          <BiCard className="mr-2 h-6 w-6" />
-          {editMode ? (
-            <input
-              type="text"
-              className="text-2xl font-bold w-full"
-              value={taskName}
-              onChange={handleTaskNameChange}
-              onBlur={handleTaskNameBlur}
-              autoFocus
-            />
-          ) : (
-            <div
-              onClick={() => setEditMode(true)}
-              className="flex items-center cursor-pointer"
-            >
-              <h2 className="text-2xl font-bold truncate">{taskName}</h2>
-            </div>
-          )}
-        </div>
+      <ModalHeader editMode={editMode} setEditMode={setEditMode} taskName={taskName} setTaskName={setTaskName} updateTask={handleTaskNameBlur} />
         <div className="modal-body flex flex-col md:flex-row md:pt-8">
           <div className="w-full md:w-3/4 md:pr-4">
             <div className="flex items-center mb-2">
@@ -142,116 +128,14 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
               </div>
               <h3 className="text-lg font-bold mb-0">Description</h3>
             </div>
-            {isTextareaVisible ? (
-              <div>
-                <textarea
-                  value={descriptionText}
-                  onChange={handleTextareaChange}
-                  rows={4}
-                  className="resize-none w-full p-2 border border-gray-300 rounded"
-                />
-                <div className="flex justify-end mt-2">
-                  <button
-                    onClick={handleSave}
-                    className="mr-2 px-4 py-2  bg-slate-500 text-white rounded-lg shadow-md hover:bg-gray-400 transition duration-300"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={toggleTextareaVisibility}
-                    className="px-4 py-2 bg-slate-500 text-white rounded-lg shadow-md hover:bg-gray-400 transition duration-300"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <a
-                onClick={toggleTextareaVisibility}
-                className="cursor-pointer inline-block px-4 py-2 bg-slate-300 text-black rounded-lg shadow-md hover:bg-slate-400 transition duration-300 w-full h-10"
-              >
-                Add Description
-              </a>
-            )}
+
+            <DescriptionSection isTextareaVisible={isTextareaVisible} descriptionText={descriptionText} setDescriptionText={handleTextareaChange} updateTask={handleSave} setIsTextareaVisible={toggleTextareaVisibility} />
           </div>
           <div className="rounded-lg p-4 md:w-1/4">
-            <div className="mb-6 flex flex-col">
-              <h3 className="text-lg font-bold mb-2">Add to the card</h3>
-              <button
-                className="bg-slate-300 text-black rounded-lg shadow-md hover:bg-slate-400 transition duration-300 w-full h-10 flex items-center justify-center"
-                onClick={handleDateButtonClick}
-              >
-                Due Date
-              </button>
-              {isdateModal && (
-                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-                  <div
-                    onClick={closeDateModal}
-                    className="bg-gray-800 bg-opacity-50 absolute inset-0"
-                  ></div>
-                  <div className="bg-white rounded-lg shadow-lg p-6 relative">
-                    <h2 className="text-lg font-semibold mb-4">
-                      Select Due Date
-                    </h2>
-                    <div className="flex items-center gap-4 mb-4">
-                      <DatePicker
-                        selected={
-                          selectedDate !== null ? selectedDate : undefined
-                        }
-                        onChange={handleDateChange}
-                        placeholderText="Choose Date"
-                        dateFormat="yyyy-MM-dd"
-                      />
-                    </div>
-                    <button
-                      className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded-md shadow-md transition duration-300 mr-2"
-                      onClick={handleSaveDate}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md shadow-md transition duration-300"
-                      onClick={closeDateModal}
-                    >
-                      Close
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
+          <DueDateSection task={task} isdateModal={isdateModal} setDateModalOpen={setDateModalOpen} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+           
             <div>
-              <h3 className="text-lg font-bold mb-2">Actions</h3>
-              <div className="flex flex-col gap-2">
-                <select
-                  defaultValue={'DEFAULT'}
-                  className="bg-slate-300 text-black rounded-lg shadow-md hover:bg-slate-400 transition duration-300 w-full py-2 px-4"
-                  onChange={(e) => {
-                    handleMoveTask(
-                      Number(task.list_id),
-                      Number(task.id),
-                      parseInt(e.target.value),
-                    )
-                    onClose()
-                  }}
-                >
-                  <option value="DEFAULT" disabled hidden>
-                    Move to
-                  </option>
-                  {lists &&
-                    lists.map((list) => (
-                      <option key={list.id} value={list.id}>
-                        {list.name}
-                      </option>
-                    ))}
-                </select>
-                <button
-                  onClick={handleDelete}
-                  className=" bg-slate-300 text-black rounded-lg shadow-md hover:bg-slate-400 transition duration-300 w-full h-10"
-                >
-                  Delete
-                </button>
-              </div>
+              <ActionsSection task={task} lists={lists} deleteTask={handleDelete} handleMoveTask={handleMoveTask} />
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { IList } from '../../models/IList';
 import TextAreaForm from './TextAreaForm';
 import { useParams } from 'react-router-dom';
-interface TextAreaComponentProps {
+export interface TextAreaComponentProps {
   list: IList;
   showTextarea: { [key: number]: boolean };
   setShowTextarea: React.Dispatch<React.SetStateAction<{ [key: number]: boolean }>>;

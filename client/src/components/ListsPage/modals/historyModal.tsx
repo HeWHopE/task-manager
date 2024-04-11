@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { BsArrowLeftShort } from 'react-icons/bs'
 
-interface HistoryModalProps {
+export interface HistoryModalProps {
   onClose: () => void
   activities?: any[]
   onOpenChange: (isOpen: boolean) => void // Callback function to notify parent about open/close state
+  style?: React.CSSProperties
 }
 
 const HistoryModal: React.FC<HistoryModalProps> = ({
@@ -53,7 +54,7 @@ const HistoryModal: React.FC<HistoryModalProps> = ({
     <div>
       <div
         id="history-modal"
-        className={` pt-[1px] min-h-[871px] border-l-[1px]  border-gray-400  top-12 ${open ? 'w-72' : 'w-4'} duration-300 absolute right-0 overflow-hidden`}
+        className={` pt-[1px] min-h-[871px] border-l-[1px]  border-gray-400 bg-black top-12 ${open ? 'w-72' : 'w-4'} duration-300 absolute right-0 overflow-hidden`}
       >
         <nav
           className={` h-20  history-navbar border-b-[1px]  border-gray-400 border-grey-400 justify-center w-full text-white px-4 duration-300 py-2 flex items-center `}

@@ -5,7 +5,7 @@ import ListEditForm from './ListEditForm';
 import { IList } from '../../models/IList';
 import { useUpdateListMutation } from '../../services/ListService';
 
-interface ListItemProps {
+export interface ListItemProps {
   list: IList;
   remove: (list: IList) => void;
 }

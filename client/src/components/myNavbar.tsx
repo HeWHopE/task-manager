@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const MyNavbar: React.FC = () => {
+const MyNavbar: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <nav className="bg-black h-12 border-b-[1px] border-gray-400">
       <div className="mx-auto px-4 sm:px-2 md:px-2 lg:px-6 ">

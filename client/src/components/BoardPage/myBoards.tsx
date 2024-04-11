@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useDeleteBoardMutation } from '../../services/BoardService'
 import { usePostBoardMutation } from '../../services/BoardService' // Add this line to import the useCreateBoardMutation hook
 
-interface Props {
+export interface Props {
   boards: IBoard[] | undefined
 }
 

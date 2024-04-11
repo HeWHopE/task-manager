@@ -4,7 +4,7 @@ import TaskList from './taskList';
 import { IList } from '../../models/IList';
 import { TextAreaComponent } from './TextAreaComponent';
 
-interface ListItemsProps {
+export interface ListItemsProps {
     sortedLists: IList[] | undefined; // Adjusted type to allow undefined
 
   handleRemove: (list: IList) => void;

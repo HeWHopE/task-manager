@@ -4,7 +4,7 @@ import { BsPlus } from 'react-icons/bs';
 import { IList } from '../../models/IList';
 import { taskApi } from '../../services/TaskService';
 
-interface TextAreaFormProps {
+export interface TextAreaFormProps {
   list: IList;
   showTextarea: boolean;
   setShowTextarea: React.Dispatch<React.SetStateAction<boolean>>;

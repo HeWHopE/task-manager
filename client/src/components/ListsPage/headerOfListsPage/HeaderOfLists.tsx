@@ -6,7 +6,7 @@ import {
   useUpdateBoardMutation,
 } from '../../../services/BoardService'
 
-interface HeaderOfListsProps {
+export interface HeaderOfListsProps {
   isHistoryModalOpen: boolean
   isBoardsModalOpen: boolean
 }
