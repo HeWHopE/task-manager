@@ -16,7 +16,7 @@ client/src/stories/..
 docker compose up --build
 ```
 
-# To Run the Application Locally
+# To Run an Application Locally
 
 - Configure the `.env` file:
   
