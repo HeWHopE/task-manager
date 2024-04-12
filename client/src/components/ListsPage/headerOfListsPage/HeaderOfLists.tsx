@@ -62,11 +62,12 @@ const HeaderOfLists: React.FC<HeaderOfListsProps> = ({
           />
         </div>
       ) : (
-        <span className="truncate text-white cursor-pointer">{board?.name}</span>
+        <span className="truncate text-white cursor-pointer">
+          {board?.name}
+        </span>
       )}
     </header>
-  );
-  
+  )
 }
 
 export default HeaderOfLists

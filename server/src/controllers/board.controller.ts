@@ -1,6 +1,5 @@
 import { Controller, Get, Post, Body, Delete, Param, Put } from '@nestjs/common'
 
-
 import { Board } from '../entities/Board.entity'
 import { BoardService } from '../services/board.service'
 
@@ -33,8 +32,8 @@ export class BoardController {
     return this.boardService.deleteBoard(id)
   }
 
-  @Get("/")
+  @Get('/')
   async getBoard() {
-    return "SUp"
+    return 'SUp'
   }
 }

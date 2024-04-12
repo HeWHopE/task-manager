@@ -49,7 +49,7 @@ const HistoryModal: React.FC<HistoryModalProps> = ({
   useEffect(() => {
     onOpenChange(open)
   }, [open, onOpenChange])
- 
+
   return (
     <div>
       <div
@@ -65,39 +65,40 @@ const HistoryModal: React.FC<HistoryModalProps> = ({
             History
           </h2>
         </nav>
-        {open && ( 
-  <div className={`mb-2 pl-2 pr-2`}>
-    {activities && activities.length > 0 ? (
-      <ul className="p-2">
-        {activities
-          .slice() // Create a shallow copy of the activities array
-          .sort((a, b) => b.id - a.id) // Sort activities by ID in descending order
-          .slice(0, 8) // Get the last 8 activities after sorting
-          .map((activity, index) => (
-            <div
-              key={index}
-              className="border-b-2 border-slate-400 text-white"
-            >
-              <li className="p-2 italic ">{activity.action_description}</li>
-              <div className="italic flex justify-between px-2 py-1 text-white">
-                <span>
-                  {formatDate(activity.timestamp.toLocaleString())} at{' '}
-                  {formatTime(activity.timestamp.toLocaleString())}
-                </span>
+        {open && (
+          <div className={`mb-2 pl-2 pr-2`}>
+            {activities && activities.length > 0 ? (
+              <ul className="p-2">
+                {activities
+                  .slice() // Create a shallow copy of the activities array
+                  .sort((a, b) => b.id - a.id) // Sort activities by ID in descending order
+                  .slice(0, 8) // Get the last 8 activities after sorting
+                  .map((activity, index) => (
+                    <div
+                      key={index}
+                      className="border-b-2 border-slate-400 text-white"
+                    >
+                      <li className="p-2 italic ">
+                        {activity.action_description}
+                      </li>
+                      <div className="italic flex justify-between px-2 py-1 text-white">
+                        <span>
+                          {formatDate(activity.timestamp.toLocaleString())} at{' '}
+                          {formatTime(activity.timestamp.toLocaleString())}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+              </ul>
+            ) : (
+              <div className="flex justify-center items-center h-20">
+                <p className="italic text-white">
+                  History of Board's activities is empty...
+                </p>
               </div>
-            </div>
-          ))}
-      </ul>
-    ) : (
-       <div className="flex justify-center items-center h-20">
-        <p className="italic text-white">History of Board's activities is empty...</p>
-      </div>
-
-
-    )}
-  </div>
-)}
-
+            )}
+          </div>
+        )}
       </div>
 
       <BsArrowLeftShort

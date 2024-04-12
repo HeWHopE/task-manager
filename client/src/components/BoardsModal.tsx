@@ -13,8 +13,8 @@ interface BoardsModalProps {
 
 const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
   const [open, setOpen] = useState(false)
-  const [activeBoardIndex, setActiveBoardIndex] = useState<number | null>(null) 
-  const [showInput, setShowInput] = useState(false) 
+  const [activeBoardIndex, setActiveBoardIndex] = useState<number | null>(null)
+  const [showInput, setShowInput] = useState(false)
   const [newBoardName, setNewBoardName] = useState('')
   const [showDeleteButton, setShowDeleteButton] = useState(false)
   const { data: boards } = useFetchBoardsQuery()
@@ -22,25 +22,24 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
 
   const [deleteBoard] = useDeleteBoardMutation()
 
-
   useEffect(() => {
     onOpenChange(open)
   }, [open, onOpenChange])
 
   const handleCloseInput = () => {
-    setShowInput(false) 
+    setShowInput(false)
   }
 
   const handleAdd = () => {
     if (newBoardName.trim() !== '') {
-      postBoard({ name: newBoardName }) 
-      setNewBoardName('') 
-      setShowInput(false) 
+      postBoard({ name: newBoardName })
+      setNewBoardName('')
+      setShowInput(false)
     }
   }
 
   const handleAddBoard = () => {
-    setShowInput(true) 
+    setShowInput(true)
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -48,7 +47,7 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
   }
 
   const handleDeleteBoard = (id: number) => {
-    deleteBoard({ id: id }) 
+    deleteBoard({ id: id })
   }
 
   return (
@@ -74,9 +73,8 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
               className="ml-auto cursor-pointer"
               onClick={handleAddBoard}
             />{' '}
-            
           </h2>
-          {showInput && ( 
+          {showInput && (
             <div className="flex items-center mb-4">
               <input
                 type="text"
@@ -104,36 +102,34 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
           <ul className="flex flex-col">
             {/* Map through the boards array */}
             {boards &&
-  boards.map((board: IBoard,  index: number) => (
-    <div key={index} className="relative">
-      <Link
-        to={`/lists/${board.id}`}
-        className="italic flex items-center"
-        onClick={(e) => e.preventDefault()} // prevent default navigation
-      >
-        <li
-          className={`text-white w-full hover:bg-slate-400 truncate p-2 rounded-md relative`}
-          onMouseEnter={() => setShowDeleteButton(true)}
-          onMouseLeave={() => setShowDeleteButton(false)}
-        >
-          {board.name}
-          {showDeleteButton && ( // Show delete button only when hovering over the li element
-            <button
-              className="absolute top-0 right-0 p-2 text-white opacity-100 transition-opacity duration-300 hover:opacity-100"
-              onClick={(e) => {
-                e.stopPropagation(); // Stop event propagation
-                handleDeleteBoard(Number(board.id));
-              }}
-            >
-              X
-            </button>
-          )}
-        </li>
-      </Link>
-    </div>
-  ))}
-
-
+              boards.map((board: IBoard, index: number) => (
+                <div key={index} className="relative">
+                  <Link
+                    to={`/lists/${board.id}`}
+                    className="italic flex items-center"
+                    onClick={(e) => e.preventDefault()} // prevent default navigation
+                  >
+                    <li
+                      className={`text-white w-full hover:bg-slate-400 truncate p-2 rounded-md relative`}
+                      onMouseEnter={() => setShowDeleteButton(true)}
+                      onMouseLeave={() => setShowDeleteButton(false)}
+                    >
+                      {board.name}
+                      {showDeleteButton && ( // Show delete button only when hovering over the li element
+                        <button
+                          className="absolute top-0 right-0 p-2 text-white opacity-100 transition-opacity duration-300 hover:opacity-100"
+                          onClick={(e) => {
+                            e.stopPropagation() // Stop event propagation
+                            handleDeleteBoard(Number(board.id))
+                          }}
+                        >
+                          X
+                        </button>
+                      )}
+                    </li>
+                  </Link>
+                </div>
+              ))}
           </ul>
         </div>
       </div>

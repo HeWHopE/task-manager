@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   db:
@@ -10,18 +10,18 @@ services:
       - POSTGRES_DB=postgres
     container_name: postgres
     ports:
-      - '5432:5432'
+      - "5432:5432"
 
-  server:    
-    build: ./server    
-    container_name: api_backend    
-    ports:      
-      - '5000:5000'    
+  server:
+    build: ./server
+    container_name: api_backend
+    ports:
+      - "5000:5000"
 
   client:
     build: ./client
     container_name: api_frontend
     ports:
-      - '3000:3000'
+      - "3000:3000"
     depends_on:
       - server

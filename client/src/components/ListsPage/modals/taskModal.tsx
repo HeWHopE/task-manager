@@ -53,7 +53,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
   }
 
   const handleTaskNameBlur = () => {
-   
     setEditMode(false)
     if (taskName.trim().length === 0) {
       setTaskName('Untitled')
@@ -109,7 +108,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
       console.error('An error occurred:', error)
     }
   }
-  
+
   return (
     <div
       onClick={onClose}
@@ -119,7 +118,14 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
         onClick={(event) => event.stopPropagation()}
         className="bg-slate-200 rounded-lg md:w-3/5 lg:w-1/2 xl:w-5/12 h-5/6 p-8 overflow-y-auto"
       >
-      <ModalHeader editMode={editMode} setEditMode={setEditMode} taskName={taskName} onClose ={onClose}  setTaskName={setTaskName} updateTask={handleTaskNameBlur} />
+        <ModalHeader
+          editMode={editMode}
+          setEditMode={setEditMode}
+          taskName={taskName}
+          onClose={onClose}
+          setTaskName={setTaskName}
+          updateTask={handleTaskNameBlur}
+        />
         <div className="modal-body flex flex-col md:flex-row md:pt-8">
           <div className="w-full md:w-3/4 md:pr-4">
             <div className="flex items-center mb-2">
@@ -129,19 +135,34 @@ const TaskModal: React.FC<TaskModalProps> = ({ onClose, task, boardId }) => {
               <h3 className="text-lg font-bold mb-0">Description</h3>
             </div>
 
-            <DescriptionSection isTextareaVisible={isTextareaVisible} descriptionText={descriptionText} setDescriptionText={handleTextareaChange} updateTask={handleSave} setIsTextareaVisible={toggleTextareaVisibility} />
+            <DescriptionSection
+              isTextareaVisible={isTextareaVisible}
+              descriptionText={descriptionText}
+              setDescriptionText={handleTextareaChange}
+              updateTask={handleSave}
+              setIsTextareaVisible={toggleTextareaVisibility}
+            />
           </div>
           <div className="rounded-lg p-4 md:w-1/4">
-          <DueDateSection task={task} isdateModal={isdateModal} setDateModalOpen={setDateModalOpen} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-           
+            <DueDateSection
+              task={task}
+              isdateModal={isdateModal}
+              setDateModalOpen={setDateModalOpen}
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+            />
+
             <div>
-              <ActionsSection task={task} lists={lists} deleteTask={handleDelete} handleMoveTask={handleMoveTask} />
+              <ActionsSection
+                task={task}
+                lists={lists}
+                deleteTask={handleDelete}
+                handleMoveTask={handleMoveTask}
+              />
             </div>
           </div>
         </div>
-        
       </div>
-      
     </div>
   )
 }

@@ -3,7 +3,9 @@ import { IList } from '../models/IList'
 
 export const listApi = createApi({
   reducerPath: 'listApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://react-app-2-dep.onrender.com' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://react-app-2-dep.onrender.com',
+  }),
   tagTypes: ['List'],
   endpoints: (build) => ({
     fetchLists: build.query<IList[], { boardId: number }>({

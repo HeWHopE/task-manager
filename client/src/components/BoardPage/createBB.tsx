@@ -29,9 +29,9 @@ export const CreateBB: React.FC = () => {
   }
 
   return (
-    <div >
+    <div>
       {!showInput && (
-        <button data-testid="createBB"onClick={handleCreate}>
+        <button data-testid="createBB" onClick={handleCreate}>
           <div className="w-60 h-20 duration-200 hover:bg-slate-200 cursor-pointer bg-slate-50">
             <div className="flex items-center justify-center h-full">
               Create Board

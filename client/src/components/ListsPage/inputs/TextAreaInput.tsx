@@ -1,12 +1,16 @@
-import React from 'react';
+import React from 'react'
 
 export interface TextAreaInputProps {
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  placeholder: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-const TextAreaInput: React.FC<TextAreaInputProps> = ({ placeholder, value, onChange }) => {
+const TextAreaInput: React.FC<TextAreaInputProps> = ({
+  placeholder,
+  value,
+  onChange,
+}) => {
   return (
     <textarea
       className="flex-grow bg-white rounded-lg shadow border-none p-2 resize-none mb-2 w-80"
@@ -14,7 +18,7 @@ const TextAreaInput: React.FC<TextAreaInputProps> = ({ placeholder, value, onCha
       value={value}
       onChange={onChange}
     />
-  );
+  )
 }
 
-export default TextAreaInput;
+export default TextAreaInput

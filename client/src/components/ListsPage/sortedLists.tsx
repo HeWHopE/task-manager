@@ -1,15 +1,17 @@
-import React from 'react';
-import ListItem from './listItem';
-import TaskList from './taskList';
-import { IList } from '../../models/IList';
-import { TextAreaComponent } from './TextAreaComponent';
+import React from 'react'
+import ListItem from './listItem'
+import TaskList from './taskList'
+import { IList } from '../../models/IList'
+import { TextAreaComponent } from './TextAreaComponent'
 
 export interface ListItemsProps {
-    sortedLists: IList[] | undefined; // Adjusted type to allow undefined
+  sortedLists: IList[] | undefined // Adjusted type to allow undefined
 
-  handleRemove: (list: IList) => void;
-  showTextarea: { [key: number]: boolean };
-  setShowTextarea: React.Dispatch<React.SetStateAction<{ [key: number]: boolean }>>;
+  handleRemove: (list: IList) => void
+  showTextarea: { [key: number]: boolean }
+  setShowTextarea: React.Dispatch<
+    React.SetStateAction<{ [key: number]: boolean }>
+  >
 }
 
 const ListItems: React.FC<ListItemsProps> = ({
@@ -36,7 +38,7 @@ const ListItems: React.FC<ListItemsProps> = ({
         </li>
       ))}
     </>
-  );
+  )
 }
 
-export default ListItems;
+export default ListItems

@@ -1,35 +1,39 @@
-import React, { useState } from 'react';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { BsPlus } from 'react-icons/bs';
-import { IList } from '../../models/IList';
-import { taskApi } from '../../services/TaskService';
+import React, { useState } from 'react'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { BsPlus } from 'react-icons/bs'
+import { IList } from '../../models/IList'
+import { taskApi } from '../../services/TaskService'
 
 export interface TextAreaFormProps {
-  list: IList;
-  showTextarea: boolean;
-  setShowTextarea: React.Dispatch<React.SetStateAction<boolean>>;
+  list: IList
+  showTextarea: boolean
+  setShowTextarea: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const TextAreaForm: React.FC<TextAreaFormProps> = ({ list, showTextarea, setShowTextarea }) => {
-  const [postTaskMutation] = taskApi.usePostTaskMutation();
-  const [text, setText] = useState('');
-  
+const TextAreaForm: React.FC<TextAreaFormProps> = ({
+  list,
+  showTextarea,
+  setShowTextarea,
+}) => {
+  const [postTaskMutation] = taskApi.usePostTaskMutation()
+  const [text, setText] = useState('')
+
   const handleAddCard = () => {
-    if (!text.trim()) return;
-    
+    if (!text.trim()) return
+
     postTaskMutation({
       listId: Number(list.id),
-      task: { name: text.trim() }
-    });
-    
-    setText('');
-    setShowTextarea(false);
-  };
+      task: { name: text.trim() },
+    })
+
+    setText('')
+    setShowTextarea(false)
+  }
 
   const handleClose = () => {
-    setText('');
-    setShowTextarea(false);
-  };
+    setText('')
+    setShowTextarea(false)
+  }
 
   return (
     <div className="flex justify-center">
@@ -69,7 +73,7 @@ const TextAreaForm: React.FC<TextAreaFormProps> = ({ list, showTextarea, setShow
         </button>
       )}
     </div>
-  );
+  )
 }
 
-export default TextAreaForm;
+export default TextAreaForm

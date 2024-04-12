@@ -1,14 +1,14 @@
-import React from 'react';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
-import AddListButton from './buttons/AddListButton';
-import TextAreaInput from './inputs/TextAreaInput';
+import React from 'react'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import AddListButton from './buttons/AddListButton'
+import TextAreaInput from './inputs/TextAreaInput'
 
 interface AddListFormProps {
-  isAddingList: boolean;
-  newListName: string;
-  handleAddList: () => void;
-  setNewListName: (value: string) => void;
-  setIsAddingList: (value: boolean) => void;
+  isAddingList: boolean
+  newListName: string
+  handleAddList: () => void
+  setNewListName: (value: string) => void
+  setIsAddingList: (value: boolean) => void
 }
 
 const AddListForm: React.FC<AddListFormProps> = ({
@@ -46,7 +46,7 @@ const AddListForm: React.FC<AddListFormProps> = ({
         <AddListButton onClick={() => setIsAddingList(true)} />
       )}
     </li>
-  );
+  )
 }
 
-export default AddListForm;
+export default AddListForm

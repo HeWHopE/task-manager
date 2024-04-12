@@ -109,15 +109,13 @@ const ListContainer: React.FC<ListContainerProps> = ({
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
       >
-       
         <ListItems
-        sortedLists={sortedLists}
-        handleRemove={handleRemove}
-        showTextarea={showTextarea}
-        setShowTextarea={setShowTextarea}
-      />
-        
-        
+          sortedLists={sortedLists}
+          handleRemove={handleRemove}
+          showTextarea={showTextarea}
+          setShowTextarea={setShowTextarea}
+        />
+
         <AddListForm
           isAddingList={isAddingList}
           newListName={newListName}

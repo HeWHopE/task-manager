@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 interface ListEditFormProps {
-  listName: string;
-  setListName: (value: string) => void;
-  handleUpdate: (listName: string) => void;
+  listName: string
+  setListName: (value: string) => void
+  handleUpdate: (listName: string) => void
 }
 
-const ListEditForm: React.FC<ListEditFormProps> = ({ listName, setListName, handleUpdate }) => {
-  const [editMode, setEditMode] = useState(false);
+const ListEditForm: React.FC<ListEditFormProps> = ({
+  listName,
+  setListName,
+  handleUpdate,
+}) => {
+  const [editMode, setEditMode] = useState(false)
 
   return (
     <>
@@ -17,12 +21,12 @@ const ListEditForm: React.FC<ListEditFormProps> = ({ listName, setListName, hand
           value={listName}
           onChange={(e) => setListName(e.target.value)}
           onBlur={() => {
-            setEditMode(false);
+            setEditMode(false)
             if (listName.length < 1) {
-              setListName('Untitled');
-              return;
+              setListName('Untitled')
+              return
             }
-            handleUpdate(listName);
+            handleUpdate(listName)
           }}
           autoFocus
           rows={1}
@@ -38,7 +42,7 @@ const ListEditForm: React.FC<ListEditFormProps> = ({ listName, setListName, hand
         />
       )}
     </>
-  );
+  )
 }
 
-export default ListEditForm;
+export default ListEditForm

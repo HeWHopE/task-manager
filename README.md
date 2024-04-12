@@ -1,7 +1,6 @@
 # Deployed
 
- [Link](https://react-app-2-dep-1.onrender.com/)
-
+[Link](https://react-app-2-dep-1.onrender.com/)
 
 # See my stories in
 
@@ -11,7 +10,6 @@ client/src/stories/..
 
 # To Run an application using docker
 
-
 ```plaintext
 docker compose up --build
 ```
@@ -19,7 +17,7 @@ docker compose up --build
 # To Run the Application Locally
 
 - Configure the `.env` file:
-  
+
 ```plaintext
 DATABASE_USERNAME=USERNAME
 DATABASE_PASSWORD=PASSWORD
@@ -30,7 +28,6 @@ DATABASE_PORT=PORT
 
 ## Installation
 
-
 ```bash
 npm install
 ```
@@ -40,7 +37,3 @@ npm install
 ```bash
 npm start
 ```
-
-
-
-
