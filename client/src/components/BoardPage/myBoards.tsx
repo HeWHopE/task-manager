@@ -22,7 +22,7 @@ const Boards: React.FC<Props> = ({ boards }) => {
         <CreateBB />
         {boards &&
           boards.map((board) => (
-            <div key={board.id} className="relative group text-white">
+            <div key={board.id} className="z-2 relative group text-white">
               <Link
                 to={`/lists/${Number(board.id)}`}
                 className="w-60 h-20 bg-gray-300 hover:opacity-70 p-2 rounded cursor-pointer text-black flex items-center justify-center"

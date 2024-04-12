@@ -2,6 +2,8 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import { useUpdateTaskMutation } from '../../../../services/TaskService';
 import { ITask } from '../../../../models/ITask';
+import { GoClock } from 'react-icons/go'
+import { IoIosClose } from "react-icons/io";
 
 interface DueDateSectionProps {
   selectedDate: Date | null;
@@ -46,34 +48,41 @@ const DueDateSection: React.FC<DueDateSectionProps> = ({task, selectedDate, isda
             className="bg-slate-300 text-black rounded-lg shadow-md hover:bg-slate-400 transition duration-300 w-full h-10 flex items-center justify-center"
             onClick={handleDateButtonClick}
           >
-            Due Date
+          <GoClock className='text-black m-1'/>  Due Date
           </button>
           {isdateModal && (
             <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
               <div onClick={closeDateModal} className="bg-gray-800 bg-opacity-50 absolute inset-0"></div>
               <div className="bg-white rounded-lg shadow-lg p-6 relative">
-                <h2 className="text-lg font-semibold mb-4">Select Due Date</h2>
-                <div className="flex items-center gap-4 mb-4">
-                  <DatePicker
-                    selected={selectedDate !== null ? selectedDate : undefined}
-                    onChange={handleDateChange}
-                    placeholderText="Choose Date"
-                    dateFormat="yyyy-MM-dd"
-                  />
-                </div>
-                <button
-                  className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded-md shadow-md transition duration-300 mr-2"
-                  onClick={handleSaveDate}
-                >
-                  Save
-                </button>
-                <button
-                  className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md shadow-md transition duration-300"
-                  onClick={closeDateModal}
-                >
-                  Close
-                </button>
-              </div>
+              <div className="flex items-center justify-between mb-4">
+  <h2 className="text-lg font-semibold">Select Due Date</h2>
+  <div className="ml-auto hover:bg-slate-300 rounded-xl p-1">
+    <IoIosClose
+      onClick={closeDateModal}
+      className="w-8 h-8 text-xl cursor-pointer"
+    />
+  </div>
+</div>
+
+  <div className="flex justify-center items-center gap-4 mb-4">
+    <DatePicker
+      selected={selectedDate !== null ? selectedDate : undefined}
+      onChange={handleDateChange}
+      placeholderText="Choose Date"
+      dateFormat="yyyy-MM-dd"
+      className='border border-gray-300 rounded-md h-10 cursor-pointer text-center'
+    />
+  </div>
+            <div className="flex justify-center">
+  <button
+    className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded-md shadow-md transition duration-300 mr-2"
+    onClick={handleSaveDate}
+  >
+    Save
+  </button>  
+  </div>
+</div>
+
             </div>
           )}
         </div>

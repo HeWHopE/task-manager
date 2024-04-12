@@ -5,6 +5,7 @@ import { useFetchBoardsQuery } from '../services/BoardService'
 import { RiAddLine } from 'react-icons/ri' // Import the RiAddLine icon
 import { usePostBoardMutation } from '../services/BoardService'
 import { useDeleteBoardMutation } from '../services/BoardService'
+import { IBoard } from '../models/IBoard'
 
 interface BoardsModalProps {
   onOpenChange: (isOpen: boolean) => void
@@ -54,7 +55,7 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
     <div className="z-50 ">
       <div
         id="history-modal"
-        className={`z-2 min-h-[871px] bg-black border-r-[0.5px]  border-gray-400 border-slate-5  top-12 ${open ? 'w-72' : 'w-4  '} duration-300 absolute overflow-hidden`}
+        className={`z-50 min-h-[871px] bg-black border-r-[0.5px]  border-gray-400 border-slate-5  top-12 ${open ? 'w-72' : 'w-4  '} duration-300 absolute overflow-hidden`}
       >
         <nav
           className={` h-20 history-navbar justify-center w-full text-white px-4 duration-300 py-2 flex items-center `}
@@ -103,32 +104,35 @@ const BoardsModal: React.FC<BoardsModalProps> = ({ onOpenChange }) => {
           <ul className="flex flex-col">
             {/* Map through the boards array */}
             {boards &&
-  boards.map((board, index) => (
+  boards.map((board: IBoard,  index: number) => (
     <div key={index} className="relative">
-    <Link to={`/lists/${board.id}`} className="italic flex items-center">
-    <li
-            className={`text-white w-full hover:bg-slate-400 truncate p-2 rounded-md relative`}
-            onClick={() => setActiveBoardIndex(index)}
-            onMouseEnter={() => setShowDeleteButton(true)}
-            onMouseLeave={() => setShowDeleteButton(false)}
+      <Link
+        to={`/lists/${board.id}`}
+        className="italic flex items-center"
+        onClick={(e) => e.preventDefault()} // prevent default navigation
+      >
+        <li
+          className={`text-white w-full hover:bg-slate-400 truncate p-2 rounded-md relative`}
+          onMouseEnter={() => setShowDeleteButton(true)}
+          onMouseLeave={() => setShowDeleteButton(false)}
         >
-            {board.name}
-            {showDeleteButton && ( // Show delete button only when hovering over the li element
-                <button
-                    className="absolute top-0 right-0 p-2 text-white opacity-100 transition-opacity duration-300 hover:opacity-100"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        handleDeleteBoard(Number(board.id));
-                    }}
-                >
-                    X
-                </button>
-            )}
+          {board.name}
+          {showDeleteButton && ( // Show delete button only when hovering over the li element
+            <button
+              className="absolute top-0 right-0 p-2 text-white opacity-100 transition-opacity duration-300 hover:opacity-100"
+              onClick={(e) => {
+                e.stopPropagation(); // Stop event propagation
+                handleDeleteBoard(Number(board.id));
+              }}
+            >
+              X
+            </button>
+          )}
         </li>
-
-    </Link>
-  </div>
+      </Link>
+    </div>
   ))}
+
 
           </ul>
         </div>

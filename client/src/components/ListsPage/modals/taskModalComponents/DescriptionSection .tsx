@@ -50,7 +50,7 @@ const DescriptionSection: React.FC<DescriptionSectionProps> = ({ descriptionText
         ) : (
           <a
             onClick={toggleTextareaVisibility}
-            className="cursor-pointer inline-block px-4 py-2 bg-slate-300 text-black rounded-lg shadow-md hover:bg-slate-400 transition duration-300 w-full h-10"
+            className="cursor-pointer inline-block px-4 py-2 bg-slate-300 text-black rounded-lg shadow-md hover:bg-slate-400 transition duration-300 w-full h-20"
           >
             Add Description
           </a>
