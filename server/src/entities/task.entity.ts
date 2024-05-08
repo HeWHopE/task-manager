@@ -21,7 +21,7 @@ export class Task {
 
   @Column({ type: 'text', nullable: true })
   @IsOptional() // Make the property optional
-  @IsString() // Add a custom message for validation error
+  @IsString() // Add a custom  for validation error
   description?: string | null
 
   @Column({ type: 'date', nullable: true })
