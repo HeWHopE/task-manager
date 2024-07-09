@@ -4,7 +4,7 @@ import { ActivityLog } from '../models/IActivity'
 export const activityApi = createApi({
   reducerPath: 'activityApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://react-app-2-dep.onrender.com',
+    baseUrl: 'http://localhost:5000',
   }),
   tagTypes: ['activity'],
   endpoints: (build) => ({

@@ -4,7 +4,7 @@ import { IList } from '../models/IList'
 export const listApi = createApi({
   reducerPath: 'listApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://react-app-2-dep.onrender.com',
+    baseUrl: 'http://localhost:5000',
   }),
   tagTypes: ['List'],
   endpoints: (build) => ({

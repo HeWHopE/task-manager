@@ -4,7 +4,7 @@ import { IBoard } from '../models/IBoard'
 export const boardApi = createApi({
   reducerPath: 'boardApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://react-app-2-dep.onrender.com',
+    baseUrl: 'http://localhost:5000',
   }),
   tagTypes: ['board'],
   endpoints: (build) => ({
